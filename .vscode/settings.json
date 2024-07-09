@@ -1,0 +1,15 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "storage-conn",
+      "database": "${workspaceFolder:nlw-16}/storage.db"
+    }
+  ],
+  "files.exclude": {
+    "**/*.pyc": { "when": "$(basename).py" },
+    "**/__pycache__": true,
+    "**/*.pytest_cache": true
+  }
+}
