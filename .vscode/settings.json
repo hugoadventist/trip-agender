@@ -12,7 +12,7 @@
     "**/__pycache__": true,
     "**/*.pytest_cache": true
   },
-  "terminal.integrated.env.windows": {
-    "PYTHONPATH": "${workspaceFolder}"
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}/libs/"
   }
 }
