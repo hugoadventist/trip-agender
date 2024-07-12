@@ -2,7 +2,7 @@ from sqlite3 import Connection
 from typing import Dict, List, Tuple
 
 
-class ActivitieRepository:
+class ActivitiesRepository:
     def __init__(self, conn: Connection) -> None:
         self.__conn = conn
 

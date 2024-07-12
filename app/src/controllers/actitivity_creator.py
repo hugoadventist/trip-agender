@@ -2,7 +2,7 @@ from typing import Dict
 import uuid
 
 
-class ActivitieCreator:
+class ActivitiesCreator:
     def __init__(self, activities_repository) -> None:
         self.__activities_repository = activities_repository
 
@@ -15,10 +15,10 @@ class ActivitieCreator:
                 "id": id,
                 "trip_id": trip_id,
                 "title": body["title"],
-                "name": body["occurs_at"],
+                "occurs_at": body["occurs_at"],
             }
 
-            self.__activities_repository.registry_activite(activities_infos)
+            self.__activities_repository.registry_activities(activities_infos)
 
             return {"body": {"activityId": id}, "status_code": 201}
 

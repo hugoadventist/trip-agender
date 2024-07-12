@@ -9,7 +9,7 @@ from app.src.controllers.trip_finder import TripFinder
 from app.src.controllers.trip_confirmer import TripConfirmer
 from app.src.controllers.link_creator import LinkCreator
 from app.src.controllers.link_finder import LinkFinder
-from app.src.controllers.actitivity_creator import ActivitieCreator
+from app.src.controllers.actitivity_creator import ActivitiesCreator
 from app.src.controllers.participant_creator import ParticipantCreator
 
 # Importação de Repositories
@@ -19,7 +19,7 @@ from app.src.models.repositories.emails_to_invite_repository import (
 )
 from app.src.models.repositories.trips_repository import TripsRepository
 from app.src.models.repositories.links_repository import LinksRepository
-from app.src.models.repositories.activities_repository import ActivitieRepository
+from app.src.models.repositories.activities_repository import ActivitiesRepository
 from app.src.models.repositories.participants_repository import ParticipantsRepository
 
 # Importação de conexões
@@ -79,5 +79,29 @@ def find_trip_link(tripId):
     controller = LinkFinder(links_repository)
 
     response = controller.find(tripId)
+
+    return jsonify(response["body"]), response["status_code"]
+
+
+@trips_routes_bp.route("/trips/<tripId>/invites", methods=["POST"])
+def invite_to_trip(tripId):
+    conn = db_connection_handler.get_connection()
+    participants_repository = ParticipantsRepository(conn)
+    emails_repository = EmailsToInviteRepository(conn)
+    # dependency injection here!
+    controller = ParticipantCreator(participants_repository, emails_repository)
+
+    response = controller.create(request.json, tripId)
+
+    return jsonify(response["body"]), response["status_code"]
+
+
+@trips_routes_bp.route("/trips/<tripId>/activities", methods=["POST"])
+def create_activity(tripId):
+    conn = db_connection_handler.get_connection()
+    activities_repository = ActivitiesRepository(conn)
+    controller = ActivitiesCreator(activities_repository)
+
+    response = controller.create(request.json, tripId)
 
     return jsonify(response["body"]), response["status_code"]
