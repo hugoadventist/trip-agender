@@ -9,6 +9,8 @@ from app.src.controllers.trip_finder import TripFinder
 from app.src.controllers.trip_confirmer import TripConfirmer
 from app.src.controllers.link_creator import LinkCreator
 from app.src.controllers.link_finder import LinkFinder
+from app.src.controllers.actitivity_creator import ActivitieCreator
+from app.src.controllers.participant_creator import ParticipantCreator
 
 # Importação de Repositories
 
@@ -17,6 +19,8 @@ from app.src.models.repositories.emails_to_invite_repository import (
 )
 from app.src.models.repositories.trips_repository import TripsRepository
 from app.src.models.repositories.links_repository import LinksRepository
+from app.src.models.repositories.activities_repository import ActivitieRepository
+from app.src.models.repositories.participants_repository import ParticipantsRepository
 
 # Importação de conexões
 
