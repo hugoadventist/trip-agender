@@ -15,7 +15,7 @@ def send_email(to_addrs, body):
     msg["Subject"] = "Confirmação de Viagem!"
     msg.attach(MIMEText(body, "plain"))
 
-    server = smtplib.SMTP("smtp.etheral.email", 587)
+    server = smtplib.SMTP("smtp.ethereal.email", 587)
     server.starttls()
     server.login(login, password)
     text = msg.as_string()
