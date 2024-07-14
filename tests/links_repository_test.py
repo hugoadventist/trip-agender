@@ -19,7 +19,7 @@ def test_registry_link():
         "id": link_id,
         "trip_id": trip_id,
         "link": "https://airbnb.com",
-        "title": "Hospedagem",
+        "title": "Hospedagem Gramado",
     }
 
     links_repository.registry_link(links_trips_infos)

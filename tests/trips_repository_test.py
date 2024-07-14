@@ -9,7 +9,7 @@ db_connection_handler.connect()
 trip_id = str(uuid.uuid4())
 
 
-@pytest.mark.skip(reason="interacao com o banco")
+# @pytest.mark.skip(reason="interacao com o banco")
 def test_create_trip():
     conn = db_connection_handler.get_connection()
     trips_repository = TripsRepository(conn)
@@ -19,8 +19,8 @@ def test_create_trip():
         "destination": "Palmas",
         "start_date": datetime.strptime("08-07-2024", "%d-%m-%Y"),
         "end_date": datetime.strptime("08-07-2024", "%d-%m-%Y") + timedelta(days=5),
-        "owner_name": "Osvaldo",
-        "owner_email": "osvaldo@email.com",
+        "owner_name": "Maria",
+        "owner_email": "Maria@email.com",
     }
 
     trips_repository.create_trip(trips_infos)
